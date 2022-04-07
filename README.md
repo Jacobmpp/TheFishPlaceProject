@@ -4,10 +4,13 @@
 One member of the group works at a fish store called The Fish Place.
 They offer a deal where if you by some amount of some types of water you will receive credit equal to 20% of what you purchased when you have purchased a certain amount.
 
-## Amont required to withdraw credit:
-Filter Fresh	                            10
-Reverse Osmosis	                            25
-Instant Ocean, brackish, and Red Sea      	50
+## Purchased "balance" required to withdraw credit:
+|Type|Gallons|
+|-|-|
+|Filter Fresh|10|
+|Reverse Osmosis|25|
+|Instant Ocean, brackish, and Red Sea|50|
+
 
 ## Thing the code needs to do:
 
