@@ -1,7 +1,7 @@
 
 package panels;
 
-import swing.*;
+import javax.swing.*;
 
 abstract class Panel {
 
