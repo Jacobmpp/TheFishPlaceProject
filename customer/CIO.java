@@ -3,13 +3,11 @@ package customer;
 import java.io.*;
 import java.util.*;
 
-import panels.CustomerPanel;
-
 public class CIO {
     public static final String FILE_DELIMETER=";";
     public static final String DEFAULT_FILE="customer\\customers.dat";
 
-    public static LinkedHashMap<String, Customer> customers = new LinkedHashMap<>();
+    public static TreeMap<String, Customer> customers = new TreeMap<>();
 
     //LOAD/SAVE Methods
     public static void loadFile(String fileName) { //loads the customer data in "fileName" into the customers map.
@@ -45,14 +43,39 @@ public class CIO {
         out.close();
     }
 
+    //ADD/REMOVE
     public static void addCustomer(Customer c) {
-        String key = c.name+" / "+c.phoneNumber;
+        String key = generateKey(c);
         customers.put(key, c);
     }
     public static void addCustomer(String s) {
         Customer c = new Customer(s);
         addCustomer(c);
     }
+    public static void removeCustomer(Customer c) {
+        String key = generateKey(c);
+        customers.remove(key);
+    }
+    public static void removeCustomer(String key) {    //assumes s is in the format given by generateKey()
+        customers.remove(key);
+    }
 
-    
+    public static String generateKey(Customer c) {
+        return c.name + " / " + c.phoneNumber;
+    }
+
+    public static TreeMap<String, Customer> search(String s) {  //returns a map of customers that contains the given string.
+        TreeMap<String, Customer> results = new TreeMap<>();
+        for (String key : CIO.customers.keySet()) {
+            if(key.toLowerCase().contains(s.toLowerCase()))
+                results.put(key, customers.get(key));
+        }
+        return results;
+    }
+
+    public static void printCustomers(TreeMap<String, Customer> t) {   //prints a list of customers to the terminal. Used for debugging.
+        for (String key : t.keySet()) {
+            System.out.printf(key);
+        }
+    }
 }
