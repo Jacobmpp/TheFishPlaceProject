@@ -2,6 +2,7 @@ package customer;
 
 import java.io.*;
 import java.util.*;
+import java.util.Map.Entry;
 
 public class CIO {
     public static final String FILE_DELIMETER=";";
@@ -73,9 +74,17 @@ public class CIO {
         return results;
     }
 
+    //DEBUG
     public static void printCustomers(TreeMap<String, Customer> t) {   //prints a list of customers to the terminal. Used for debugging.
-        for (String key : t.keySet()) {
-            System.out.printf(key);
+        for (Entry<String, Customer> e : t.entrySet()) {
+            System.out.printf("%40s |", e.getKey());
+            printWater(e.getValue().water);
+            System.out.println();
+        }
+    }
+    public static void printWater(double[] w) {
+        for(int i=0;i<w.length;i++) {
+            System.out.printf("%6.2f",w[i]);
         }
     }
 }

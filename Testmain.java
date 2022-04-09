@@ -14,6 +14,8 @@ public class Testmain {
         CIO.loadFile(CIO.DEFAULT_FILE);
 
         TreeMap<String, Customer> t = CIO.search("000-000-0000");   //example of the search function
-        CIO.printCustomers(t);
+        CIO.printCustomers(CIO.customers);
+
+        CIO.saveToFile(CIO.DEFAULT_FILE);
     }
 }
