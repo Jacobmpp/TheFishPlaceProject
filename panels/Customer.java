@@ -43,5 +43,6 @@ public class Customer {
     public String phoneNumberAsString() {
         String pNString = phoneNumber+"";
         String out = "(" + pNString.substring(1, 4) + ") " + pNString.substring(4, 7) + "-" + pNString.substring(7);
+        return out;
     }
 }
