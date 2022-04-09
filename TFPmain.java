@@ -16,7 +16,6 @@ public class TFPmain {
         CIO.saveToFile(CIO.DEFAULT_FILE);
 
         JFrame fullProgram = new JFrame("TFP: Customer Credit Tracker");
-        JPanel panel = new JPanel();
         fullProgram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fullProgram.setSize(1000, 700);
 
