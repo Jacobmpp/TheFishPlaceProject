@@ -1,15 +1,15 @@
-package panels;
+package customer;
 
 public class Customer {
     public String name;
-    public long phoneNumber;
+    public String phoneNumber;
     public double filterFresh;
     public double reverseOsmosis;
     public double instantOcean;
     public double brackish;
     public double redSea;
 
-    public Customer(String name_, int phoneNumber_, double filterFresh_, double reverseOsmosis_, double instantOcean_,
+    public Customer(String name_, String phoneNumber_, double filterFresh_, double reverseOsmosis_, double instantOcean_,
             double brackish_, double redSea_) {
         name = name_;
         phoneNumber = phoneNumber_;
@@ -21,10 +21,10 @@ public class Customer {
     }
 
     public Customer(String fromString) {
-        String[] parts = fromString.split(";");
+        String[] parts = fromString.split(CIO.FILE_DELIMETER);
         name = parts[0];
+        phoneNumber = parts[1];
         try {
-            phoneNumber = Long.parseLong(parts[1])%Long.parseLong("10000000000")+Long.parseLong("10000000000");
             filterFresh = Double.parseDouble(parts[2]);
             reverseOsmosis = Double.parseDouble(parts[3]);
             instantOcean = Double.parseDouble(parts[4]);
@@ -34,9 +34,16 @@ public class Customer {
         }
     }
     
+    @Override
     public String toString() {
-        String out = name + ";" + phoneNumber + ";" + filterFresh + ";" + reverseOsmosis + ";"
-                + instantOcean + ";" + brackish + ";" + redSea;
+        String delim = CIO.FILE_DELIMETER;
+        String out = name + delim + 
+                     phoneNumber + delim + 
+                     filterFresh + delim + 
+                     reverseOsmosis + delim + 
+                     instantOcean + delim + 
+                     brackish + delim + 
+                     redSea;
         return out;
     }
     
