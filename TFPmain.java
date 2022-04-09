@@ -3,7 +3,7 @@ import customer.*;
 
 public class TFPmain {
     public static void main(String[] args) {
-        System.out.printf("====The Fish Place====");
+        System.out.printf("====The Fish Place====\n");
         
 
 
