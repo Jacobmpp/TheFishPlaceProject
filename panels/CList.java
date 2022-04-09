@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class CList {
     ArrayList<Customer> customers = new ArrayList<Customer>();
-    
+
     public CList(String filename) {
         loadCustomers(filename);
     }
@@ -28,12 +28,11 @@ public class CList {
     }
 
     public void saveCustomers(String filename) {
-        try{
+        try {
             FileWriter w = new FileWriter(filename);
             for (Customer c : customers) {
-                w.write(c.toString()+"\n");
+                w.write(c.toString() + "\n");
             }
-            ;
             w.close();
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
