@@ -21,7 +21,7 @@ public class Customer {
     }
 
     public Customer(String fromString) {
-        String[] parts = fromString.split("SPR8R");
+        String[] parts = fromString.split(";");
         name = parts[0];
         try {
             phoneNumber = Long.parseLong(parts[1])%Long.parseLong("10000000000")+Long.parseLong("10000000000");
@@ -35,8 +35,8 @@ public class Customer {
     }
     
     public String toString() {
-        String out = name + "SPR8R" + phoneNumber + "SPR8R" + filterFresh + "SPR8R" + reverseOsmosis + "SPR8R"
-                + instantOcean + "SPR8R" + brackish + "SPR8R" + redSea;
+        String out = name + ";" + phoneNumber + ";" + filterFresh + ";" + reverseOsmosis + ";"
+                + instantOcean + ";" + brackish + ";" + redSea;
         return out;
     }
     
