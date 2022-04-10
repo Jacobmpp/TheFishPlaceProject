@@ -1,28 +1,31 @@
-package customer;
+package backend;
 
 import java.util.Date;
 
 public class Customer {
-    public final int WATER_BRANDS=5;
-    private String name;
-    private String phoneNumber;
-    private double water[] = new double[WATER_BRANDS];
+    public static final int WATER_BRANDS=5;
+    public String name;
+    public String phoneNumber;
+    public double water[] = new double[WATER_BRANDS];
 
     public boolean hasLastBought=false;
-    private Date lastBought;
-    private double lastWater[] = new double[WATER_BRANDS];
+    public Date lastBought;
+    public double lastWater[] = new double[WATER_BRANDS];
     //FilterFresh, ReverseOsmosis, InstantOcean, Brackish, RedSea
 
     //CONSTRUCTORS
     public Customer(String fromString) {
         String[] parts = fromString.split(CIO.FILE_DELIMETERS[1]);
+
         importData(parts[0]);
+
         if(parts.length==1) //if there is no data on last purchase.
             return;
         importLastData(parts[1]);
     }
     private void importData(String data) {
         String[] parts = data.split(CIO.FILE_DELIMETERS[0]);
+        
         name = parts[0];
         phoneNumber = parts[1];
         for(int i=0;i<water.length;i++) {
@@ -39,48 +42,6 @@ public class Customer {
         }
     }
     
-    //SETTERS/GETTERS-OVERALL
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-    public void setWater(int index, double gal) {
-        water[index]=gal;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-    public double getWater(int index) {
-        return water[index];
-    }
-    public double[] getWater() {
-        return water;
-    }
-
-    //SETTERS/GETTERS-LASTBOUGHT
-    public void setLastBought(Date d) {
-        lastBought=d;
-    }
-    public void setLastWater(int index, double gal) {
-        lastWater[index]=gal;
-    }
-
-    public Date getLastBought() {
-        return lastBought;
-    }
-    public double getLastWater(int index) {
-        return lastWater[index];
-    }
-    public double[] getLastWater() {
-        return lastWater;
-    }
-
     //ADD/SUBTRACT
     public void addWater(int index, double gal) {
         water[index]+=gal;
@@ -88,9 +49,18 @@ public class Customer {
     public void removeWater(int index, double gal) {  //edit later on whether the customer doesn't have enough.
         water[index]-=gal;
     }
+    public void applyPurchase(Purchase p) {
+        hasLastBought=true;
+        lastBought=p.purchaseDate;
+        lastWater=p.water;
+        
+        for(int i=0;i<water.length;i++) {
+            addWater(i, p.water[i]);
+        }
+    }
 
     //OVERRIDES/MISC
-    public boolean hasEnoughWater(int index, double gal) {
+    public boolean hasEnoughWater(int index, double gal) {  //has enough water of the index to subtract gal.
         if(water[index]>=gal)
             return true;
         return false;

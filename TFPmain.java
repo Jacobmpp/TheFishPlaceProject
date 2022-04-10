@@ -1,8 +1,10 @@
 
-import customer.*;
 import panels.*;
 
 import javax.swing.*;
+
+import backend.*;
+
 import java.awt.*;
 
 public class TFPmain {

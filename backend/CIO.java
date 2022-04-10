@@ -1,4 +1,4 @@
-package customer;
+package backend;
 
 import java.io.*;
 import java.util.*;
@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 public class CIO {
     public static final String[] FILE_DELIMETERS={";","#"};
-    public static final String DEFAULT_FILE="customer\\customers.dat";
+    public static final String DEFAULT_FILE="backend\\customers.dat";
 
     public static TreeMap<String, Customer> customers = new TreeMap<>();
 
@@ -44,7 +44,7 @@ public class CIO {
         out.close();
     }
     public static String generateKey(Customer c) {
-        return c.getName() + " / " + c.getPhoneNumber();
+        return c.name + " / " + c.phoneNumber;
     }
 
     //ADD/REMOVE
@@ -96,15 +96,15 @@ public class CIO {
         }
 
         System.out.printf("%40s | ", generateKey(c));    //regenerates key. not perfect but works for now.
-        printWater(c.getWater());
+        printWater(c.water);
 
         if(!c.hasLastBought){
             System.out.println();
             return;
         }
 
-        System.out.printf(" |<>|%30s | ", c.getLastBought().toString());
-        printWater(c.getLastWater());
+        System.out.printf(" |<>|%30s | ", c.lastBought.toString());
+        printWater(c.lastWater);
         System.out.println();
     }
     public static void printWater(double[] w) {

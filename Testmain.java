@@ -3,7 +3,7 @@
  * Anything in here does not matter when commited or merged.
  */
 
-import customer.*;
+import backend.*;
 
 public class Testmain {
     public static void main(String[] args) {
@@ -11,6 +11,9 @@ public class Testmain {
 
         CIO.loadFile(CIO.DEFAULT_FILE);
 
+        
+        Purchase p = new Purchase(0,10.0,0,20.25,0);    //example of applying a purchase.
+        CIO.getCustomer(11).applyPurchase(p);
         CIO.printCustomers(CIO.customers);
 
         CIO.saveToFile(CIO.DEFAULT_FILE);
