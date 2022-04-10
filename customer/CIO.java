@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.Map.Entry;
 
 public class CIO {
-    public static final String FILE_DELIMETER=";";
+    public static final String[] FILE_DELIMETERS={";","#"};
     public static final String DEFAULT_FILE="customer\\customers.dat";
 
     public static TreeMap<String, Customer> customers = new TreeMap<>();
@@ -90,13 +90,21 @@ public class CIO {
         }
     }
     public static void printCustomer(Customer c) {
-        if(c==null) {   //
+        if(c==null) {
             System.err.println("Customer pointer is null");
             return;
         }
 
         System.out.printf("%40s | ", generateKey(c));    //regenerates key. not perfect but works for now.
         printWater(c.getWater());
+
+        if(!c.hasLastBought){
+            System.out.println();
+            return;
+        }
+
+        System.out.printf(" |<>|%30s | ", c.getLastBought().toString());
+        printWater(c.getLastWater());
         System.out.println();
     }
     public static void printWater(double[] w) {

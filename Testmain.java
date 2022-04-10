@@ -13,12 +13,6 @@ public class Testmain {
 
         CIO.printCustomers(CIO.customers);
 
-        System.out.println("======================");
-
-        Customer c = CIO.getCustomer(3);
-        c.setWater(0, 10.0);
-        CIO.printCustomer(c);
-
         CIO.saveToFile(CIO.DEFAULT_FILE);
 
     }
