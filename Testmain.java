@@ -3,8 +3,6 @@
  * Anything in here does not matter when commited or merged.
  */
 
-import java.util.TreeMap;
-
 import customer.*;
 
 public class Testmain {
@@ -13,9 +11,15 @@ public class Testmain {
 
         CIO.loadFile(CIO.DEFAULT_FILE);
 
-        TreeMap<String, Customer> t = CIO.search("000-000-0000");   //example of the search function
         CIO.printCustomers(CIO.customers);
 
+        System.out.println("======================");
+
+        Customer c = CIO.getCustomer(3);
+        c.setWater(0, 10.0);
+        CIO.printCustomer(c);
+
         CIO.saveToFile(CIO.DEFAULT_FILE);
+
     }
 }

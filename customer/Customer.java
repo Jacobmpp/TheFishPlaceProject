@@ -1,11 +1,12 @@
 package customer;
 
 public class Customer {
-    public String name;
-    public String phoneNumber;
-    public double water[] = new double[5];
+    private String name;
+    private String phoneNumber;
+    private double water[] = new double[5];
     //FilterFresh, ReverseOsmosis, InstantOcean, Brackish, RedSea
 
+    //CONSTRUCTORS
     public Customer(String name_, String phoneNumber_, double filterFresh_, double reverseOsmosis_, double instantOcean_,
             double brackish_, double redSea_) {
         name = name_;
@@ -16,7 +17,6 @@ public class Customer {
         water[3] = brackish_;
         water[4] = redSea_;
     }
-
     public Customer(String fromString) {
         String[] parts = fromString.split(CIO.FILE_DELIMETER);
         name = parts[0];
@@ -26,6 +26,39 @@ public class Customer {
         }
     }
     
+    //SETTERS/GETTERS
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    public void setWater(int index, double value) {
+        water[index]=value;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public double getWater(int index) {
+        return water[index];
+    }
+    public double[] getWater() {
+        return water;
+    }
+
+    //ADD/SUBTRACT
+    public void addWater(int index, double value) {
+        water[index]+=value;
+    }
+    public void removeWater(int index, double value) {  //edit later on whether the customer doesn't have enough.
+        water[index]-=value;
+    }
+
+    //OVERRIDES
     @Override
     public String toString() {
         String delim = CIO.FILE_DELIMETER;

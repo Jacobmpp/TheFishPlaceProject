@@ -43,6 +43,9 @@ public class CIO {
         }
         out.close();
     }
+    public static String generateKey(Customer c) {
+        return c.getName() + " / " + c.getPhoneNumber();
+    }
 
     //ADD/REMOVE
     public static void addCustomer(Customer c) {
@@ -61,10 +64,7 @@ public class CIO {
         customers.remove(key);
     }
 
-    public static String generateKey(Customer c) {
-        return c.name + " / " + c.phoneNumber;
-    }
-
+    //SEARCH/GET INDEX
     public static TreeMap<String, Customer> search(String s) {  //returns a map of customers that contains the given string.
         TreeMap<String, Customer> results = new TreeMap<>();
         for (String key : CIO.customers.keySet()) {
@@ -73,14 +73,31 @@ public class CIO {
         }
         return results;
     }
+    public static Customer searchFirst(String s) { //searches the customers map and returns the first customer.
+        TreeMap<String, Customer> t = search(s);
+        if(t.size()==0)
+            return null;
+        return t.values().toArray(new Customer[0])[0];
+    }
+    public static Customer getCustomer(int index) {
+        return customers.values().toArray(new Customer[0])[index];
+    }
 
     //DEBUG
     public static void printCustomers(TreeMap<String, Customer> t) {   //prints a list of customers to the terminal. Used for debugging.
         for (Entry<String, Customer> e : t.entrySet()) {
-            System.out.printf("%40s |", e.getKey());
-            printWater(e.getValue().water);
-            System.out.println();
+            printCustomer(e.getValue());
         }
+    }
+    public static void printCustomer(Customer c) {
+        if(c==null) {   //
+            System.err.println("Customer pointer is null");
+            return;
+        }
+
+        System.out.printf("%40s | ", generateKey(c));    //regenerates key. not perfect but works for now.
+        printWater(c.getWater());
+        System.out.println();
     }
     public static void printWater(double[] w) {
         for(int i=0;i<w.length;i++) {
