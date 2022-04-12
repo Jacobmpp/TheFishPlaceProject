@@ -26,8 +26,8 @@ public class Customer {
     private void importData(String data) {
         String[] parts = data.split(CIO.FILE_DELIMETERS[0]);
         
-        name = parts[0];
-        phoneNumber = parts[1];
+        name = parts[0].trim();
+        phoneNumber = parts[1].trim();
         for(int i=0;i<water.length;i++) {
             water[i]=Double.parseDouble(parts[i+2]);
         }
