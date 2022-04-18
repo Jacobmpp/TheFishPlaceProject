@@ -35,12 +35,11 @@ public class TFPmain {
         PurchasePanel purchasePanel = new PurchasePanel();
         InfoPanel infoPanel = new InfoPanel();
 
-        searchPanel.addReferences(searchPanel, customerPanel, purchasePanel, infoPanel, CIO.customers);
-        customerPanel.addReferences(searchPanel, customerPanel, purchasePanel, infoPanel, CIO.customers);
-        purchasePanel.addReferences(searchPanel, customerPanel, purchasePanel, infoPanel, CIO.customers);
+        searchPanel.addReferences(searchPanel, customerPanel, purchasePanel, infoPanel);
+        customerPanel.addReferences(searchPanel, customerPanel, purchasePanel, infoPanel);
+        purchasePanel.addReferences(searchPanel, customerPanel, purchasePanel, infoPanel);
         infoPanel.addReferences(searchPanel, customerPanel, purchasePanel, infoPanel);
 
-        
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 0.5;
         c.weighty = 0.5;
@@ -48,14 +47,13 @@ public class TFPmain {
         c.gridy = 0;
         c.gridheight = 3;
         pane.add(searchPanel, c);
+        c.weightx = 0.1;
         c.gridx = 2;
         pane.add(customerPanel, c);
+        c.weightx = 0.5;
         c.gridx = 1;
-        c.weightx = 0.2;
-        c.weighty = 0.2;
         c.gridheight = 1;
         pane.add(infoPanel, c);
-        c.weighty = 0.6;
         c.gridy = 1;
         c.gridheight = 2;
         pane.add(purchasePanel, c);

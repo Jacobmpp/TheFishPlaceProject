@@ -3,9 +3,9 @@ package panels;
 import javax.swing.*;
 import java.awt.*;
 
-public class JLabeledTextInput extends JPanel{
+public class JLabeledTextInput extends JPanel {
     public JLabel label = new JLabel();
-    public JTextField text = new JTextField("");
+    public JTextField text = new JTextField("", 20);
 
     public JLabeledTextInput(String label_, int textBoxWidth) {
         super();
@@ -29,6 +29,6 @@ public class JLabeledTextInput extends JPanel{
     }
 
     public String getText() {
-        return label.getText();
+        return text.getText();
     }
 }
