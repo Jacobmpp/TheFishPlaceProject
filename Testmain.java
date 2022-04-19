@@ -13,8 +13,8 @@ public class Testmain {
 
         
         Purchase p = new Purchase(0,10.0,0,20.25,0);    //example of applying a purchase.
-        CIO.getCustomer(11).applyPurchase(p);
-        CIO.search("pavan", 0).redeem(3,1);
+        //CIO.getCustomer(11).applyPurchase(p);
+        System.out.println(CIO.getCustomer(11).redeemable(1));
         CIO.printCustomers(CIO.customers);
 
         CIO.saveToFile(CIO.DEFAULT_FILE);

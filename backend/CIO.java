@@ -79,7 +79,7 @@ public class CIO {
             throw new IndexOutOfBoundsException();
         return t.values().toArray(new Customer[0])[index];
     }
-    public static Customer getCustomer(int index) {
+    public static Customer getCustomer(int index) throws IndexOutOfBoundsException {
         return customers.values().toArray(new Customer[0])[index];
     }
 
