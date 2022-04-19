@@ -58,6 +58,12 @@ public class Customer {
             addWater(i, p.water[i]);
         }
     }
+    public void redeem(int index, int numGal) {
+
+    }
+    public void testRedeem(int index, int numGal) {
+
+    }
 
     //OVERRIDES/MISC
     public boolean hasEnoughWater(int index, double gal) {  //has enough water of the index to subtract gal.
