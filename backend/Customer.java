@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Customer {
     public static final int WATER_BRANDS=5;
+    public static final double credit[] = {10.0,25.0,50.0,50.0,50.0};
     public String name;
     public String phoneNumber;
     public double water[] = new double[WATER_BRANDS];
@@ -32,6 +33,7 @@ public class Customer {
             water[i]=Double.parseDouble(parts[i+2]);
         }
     }
+    @Deprecated
     private void importLastData(String data) {
         hasLastBought=true;
         String[] parts = data.split(CIO.FILE_DELIMETERS[0]);
@@ -59,10 +61,14 @@ public class Customer {
         }
     }
     public void redeem(int index, int numGal) {
+        double amount = numGal*credit[index];
 
+        water[index]-=amount;
     }
-    public void testRedeem(int index, int numGal) {
-
+    public boolean testRedeem(int index, int numGal) {
+        double amount = numGal*credit[index];
+        
+        return amount<water[index];
     }
 
     //OVERRIDES/MISC
