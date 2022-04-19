@@ -26,16 +26,17 @@ public class InfoPanel extends Panel {
         initializePanel();
     }
 
-    public void updateInfo(Customer c) {
-        name[1].setText(c.name);
-        phoneNumber[1].setText(c.phoneNumber);
+    public void updateInfo() {
+        name[1].setText(CIO.currentCustomer.name);
+        phoneNumber[1].setText(CIO.currentCustomer.phoneNumber);
         for (int i = 0; i < waters.length; i++) {
-            waters[i][1].setText(c.water[i] + "");
+            waters[i][1].setText(CIO.currentCustomer.water[i]
+                    + " (" + CIO.currentCustomer.amountRedeemable(i) + ")");
         }
 
-        lastDate[0].setVisible(c.hasLastBought);
-        if (c.hasLastBought) {
-            lastDate[1].setText(c.lastBought.toString());
+        lastDate[0].setVisible(CIO.currentCustomer.hasLastBought);
+        if (CIO.currentCustomer.hasLastBought) {
+            lastDate[1].setText(CIO.currentCustomer.lastBought.toString());
         }
     }
 

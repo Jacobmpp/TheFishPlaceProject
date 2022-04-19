@@ -29,6 +29,8 @@ public class JLabeledTextInput extends JPanel {
     }
 
     public String getText() {
+        if (text.getText().equals(""))
+            return "0.0";
         return text.getText();
     }
 

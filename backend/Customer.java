@@ -48,7 +48,7 @@ public class Customer {
     public void addWater(int index, double gal) {
         water[index]+=gal;
     }
-    public void removeWater(int index, double gal) {  //edit later on whether the customer doesn't have enough.
+    public void removeWater(int index, double gal) { 
         water[index]-=gal;
     }
     public void applyPurchase(Purchase p) {
@@ -60,22 +60,17 @@ public class Customer {
             addWater(i, p.water[i]);
         }
     }
-    public void redeem(int index, int numGal) {
-        double amount = numGal*credit[index];
-
-        water[index]-=amount;
-    }
-    public boolean testRedeem(int index, int numGal) {
-        double amount = numGal*credit[index];
-        
-        return amount<water[index];
+    public boolean redeem(int index, double numGal) throws IllegalArgumentException{
+        if (numGal > amountRedeemable(index)){
+            throw new IllegalArgumentException();
+        }
+        water[index] -= numGal * 5;
+        return true;
     }
 
     //OVERRIDES/MISC
-    public boolean hasEnoughWater(int index, double gal) {  //has enough water of the index to subtract gal.
-        if(water[index]>=gal)
-            return true;
-        return false;
+    public double amountRedeemable(int index) {  //returns amount of water that can be redeemed of type index.
+        return (water[index] - water[index] % credit[index]) / 5;
     }
 
     @Override

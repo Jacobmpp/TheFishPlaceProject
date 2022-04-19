@@ -9,6 +9,7 @@ public class CIO {
     public static final String DEFAULT_FILE="backend\\customers.dat";
 
     public static TreeMap<String, Customer> customers = new TreeMap<>();
+    public static Customer currentCustomer;
 
     //LOAD/SAVE Methods
     public static void loadFile(String fileName) { //loads the customer data in "fileName" into the customers map.
