@@ -31,4 +31,8 @@ public class JLabeledTextInput extends JPanel {
     public String getText() {
         return text.getText();
     }
+
+    public void clearText() {
+        text.setText("");
+    }
 }

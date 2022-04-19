@@ -31,9 +31,14 @@ public class CustomerPanel extends Panel {
     }
 
     private void initializePanel() {
-        submit.addActionListener(e -> { // this currently assumes the data input it correct
-            CIO.addCustomer(new Customer(encodeTextFields()));
-            CIO.saveToFile(CIO.DEFAULT_FILE);
+        submit.addActionListener(a -> { // this currently assumes the data input it correct
+            try {
+                CIO.addCustomer(new Customer(encodeTextFields()));
+                CIO.saveToFile(CIO.DEFAULT_FILE);
+                clearText();
+            } catch (Exception e) {
+                Panel.notification("Failed to add customer, check formating of numbers");
+            }
         });
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.EAST;
@@ -57,11 +62,19 @@ public class CustomerPanel extends Panel {
     }
 
     private String encodeTextFields() {
-        String out = name.getText() + CIO.FILE_DELIMETERS[0];
-        out += phoneNumber.getText() + CIO.FILE_DELIMETERS[0];
+        String out = name.getText().trim() + CIO.FILE_DELIMETERS[0];
+        out += phoneNumber.getText().trim() + CIO.FILE_DELIMETERS[0];
         for (int i = 0; i < waters.length; i++) {
-            out += waters[i].getText() + CIO.FILE_DELIMETERS[0];
+            out += waters[i].getText().trim() + CIO.FILE_DELIMETERS[0];
         }
         return out.substring(0, out.length() - 1) + CIO.FILE_DELIMETERS[1]; // replace the last ; with a #
+    }
+
+    private void clearText() {
+        name.clearText();
+        phoneNumber.clearText();
+        for (int i = 0; i < waters.length; i++) {
+            waters[i].clearText();
+        }
     }
 }
