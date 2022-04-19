@@ -73,11 +73,11 @@ public class CIO {
         }
         return results;
     }
-    public static Customer searchFirst(String s) { //searches the customers map and returns the first customer.
+    public static Customer search(String s, int index) throws IndexOutOfBoundsException{ //searches the customers map and returns the first customer.
         TreeMap<String, Customer> t = search(s);
-        if(t.size()==0)
-            return null;
-        return t.values().toArray(new Customer[0])[0];
+        if(t.size()<index)
+            throw new IndexOutOfBoundsException();
+        return t.values().toArray(new Customer[0])[index];
     }
     public static Customer getCustomer(int index) {
         return customers.values().toArray(new Customer[0])[index];
@@ -85,7 +85,9 @@ public class CIO {
 
     //DEBUG
     public static void printCustomers(TreeMap<String, Customer> t) {   //prints a list of customers to the terminal. Used for debugging.
+        int i = 0;
         for (Entry<String, Customer> e : t.entrySet()) {
+            System.out.printf("(%2d)", i++);
             printCustomer(e.getValue());
         }
     }

@@ -60,15 +60,17 @@ public class Customer {
             addWater(i, p.water[i]);
         }
     }
-    public void redeem(int index, int numGal) {
-        double amount = numGal*credit[index];
-
-        water[index]-=amount;
-    }
-    public boolean testRedeem(int index, int numGal) {
-        double amount = numGal*credit[index];
+    public boolean redeem(int index, int numGal) {
+        double amount = numGal*5;
         
-        return amount<water[index];
+        if(numGal>redeemable(index))
+            return false;
+        
+        water[index]-=amount;
+        return true;
+    }
+    public int redeemable(int index) {
+        return (int)(water[index]-credit[index])/5;
     }
 
     //OVERRIDES/MISC
