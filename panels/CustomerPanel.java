@@ -21,6 +21,7 @@ public class CustomerPanel extends Panel {
             new JLabeledTextInput("Brackish: "),
             new JLabeledTextInput("Red Sea: ")
     };
+    JLabel error = new JLabel(" ");
     JButton submit = new JButton("Submit");
 
     public CustomerPanel() {
@@ -36,8 +37,9 @@ public class CustomerPanel extends Panel {
                 CIO.addCustomer(new Customer(encodeTextFields()));
                 CIO.saveToFile(CIO.DEFAULT_FILE);
                 clearText();
+                error.setText(" ");
             } catch (Exception e) {
-                Panel.notification("Failed to add customer, check formating of numbers");
+                error.setText("Failed to add customer, check formating of numbers");
             }
         });
         GridBagConstraints c = new GridBagConstraints();
@@ -51,6 +53,13 @@ public class CustomerPanel extends Panel {
         add(name, c);
         c.gridy++;
         add(phoneNumber, c);
+        c.gridy++;
+        c.fill = GridBagConstraints.CENTER;
+        c.anchor = GridBagConstraints.CENTER;
+        error.setForeground(Color.RED);
+        add(error, c);
+        c.fill = GridBagConstraints.EAST;
+        c.anchor = GridBagConstraints.EAST;
         c.gridy++;
         for (int i = 0; i < waters.length; i++) {
             add(waters[i], c);
