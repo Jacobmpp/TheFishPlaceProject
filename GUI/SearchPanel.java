@@ -47,9 +47,9 @@ public class SearchPanel extends Panel {
             public void search() {
                 TreeMap<String, Customer> t = CIO.search(searchBar.text.getText());
                 clearBoxes();
-                if (t.keySet().size() < 16 && !searchBar.text.getText().equals("")) {
+                if (t.keySet().size() < 14 && !searchBar.text.getText().equals("")) {
                     GridBagConstraints c = new GridBagConstraints();
-                    c.fill = GridBagConstraints.NORTH;
+                    c.fill = GridBagConstraints.HORIZONTAL;
                     c.anchor = GridBagConstraints.NORTHWEST;
                     c.gridheight = 1;
                     c.gridwidth = 1;
@@ -78,12 +78,13 @@ public class SearchPanel extends Panel {
         add(searchBar, c);
         c.gridx = 0;
         c.gridwidth = 2;
+        c.fill = GridBagConstraints.BOTH;
+        c.anchor = GridBagConstraints.CENTER;
         for (SearchedCustomerPanel s : boxes.values()) {
             c.gridy++;
-            s.setVisible(true);
+            s.setVisible(false);
             add(s, c);
         }
-        clearBoxes();
     }
 
     public void clearBoxes() {
