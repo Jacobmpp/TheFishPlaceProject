@@ -35,19 +35,19 @@ public class TFPmain {
         infoPanel.addReferences(searchPanel, customerPanel, purchasePanel, infoPanel);
 
         c.fill = GridBagConstraints.BOTH;
-        c.weightx = 0.5;
+        c.weightx = 0.01;
         c.weighty = 0.5;
         c.gridx = 0;
         c.gridy = 0;
         c.gridheight = 3;
         pane.add(searchPanel, c);
+        c.weightx = 0.5;
         c.gridx = 2;
         pane.add(customerPanel, c);
         c.gridx = 1;
         c.gridheight = 1;
         pane.add(infoPanel, c);
         c.gridy = 1;
-        c.gridheight = 2;
         pane.add(purchasePanel, c);
     }
 }
