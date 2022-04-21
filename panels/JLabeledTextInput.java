@@ -5,21 +5,25 @@ import java.awt.*;
 
 public class JLabeledTextInput extends JPanel {
     public JLabel label = new JLabel();
-    public JTextField text = new JTextField("", 20);
+    public JTextField text = new JTextField("", 15);
 
     public JLabeledTextInput(String label_, int textBoxWidth) {
         super();
         label.setText(label_);
         GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.EAST;
+        text.setMaximumSize(new Dimension(Integer.MAX_VALUE, text.getHeight()));
+        c.fill = GridBagConstraints.WEST;
+        c.anchor = GridBagConstraints.WEST;
         c.gridheight = 1;
         c.gridwidth = 1;
-        c.weightx = 0.5;
+        c.weightx = 0.99;
         c.weighty = 0.5;
         c.gridx = 0;
         c.gridy = 0;
         add(label, c);
+        c.weightx = 0.01;
         c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.EAST;
         c.gridwidth = textBoxWidth;
         add(text, c);
     }

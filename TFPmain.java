@@ -13,7 +13,7 @@ public class TFPmain {
         CIO.saveToFile(CIO.DEFAULT_FILE);
         JFrame fullProgram = new JFrame("TFP: Water Credit Tracker");
         fullProgram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fullProgram.setSize(1300, 700);
+        fullProgram.setSize(950, 500);
 
         addComponentsToPane(fullProgram.getContentPane());
 
@@ -41,10 +41,8 @@ public class TFPmain {
         c.gridy = 0;
         c.gridheight = 3;
         pane.add(searchPanel, c);
-        c.weightx = 0.1;
         c.gridx = 2;
         pane.add(customerPanel, c);
-        c.weightx = 0.5;
         c.gridx = 1;
         c.gridheight = 1;
         pane.add(infoPanel, c);

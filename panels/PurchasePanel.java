@@ -35,9 +35,12 @@ public class PurchasePanel extends Panel {
                 CIO.currentCustomer.applyPurchase(new Purchase(encodeTextFields()));
                 clearText();
                 error.setText(" ");
+                infoPanel.updateInfo();
                 CIO.saveToFile(CIO.DEFAULT_FILE);
+            } catch (NullPointerException e) {
+                error.setText("Please select a customer in the search area");
             } catch (NumberFormatException e) {
-                error.setText("One of the numbers seems to have something other than numbers, try again");
+                error.setText("Wrong number format, try again");
                 clearText();
             }
         });
@@ -48,9 +51,10 @@ public class PurchasePanel extends Panel {
                 }
                 clearText();
                 error.setText(" ");
+                infoPanel.updateInfo();
                 CIO.saveToFile(CIO.DEFAULT_FILE);
             } catch (NumberFormatException e) {
-                error.setText("One of the numbers seems to have something other than numbers, try again");
+                error.setText("Wrong number format, try again");
                 clearText();
             } catch (IllegalArgumentException e) {
                 error.setText("Not enough water to redeem that amount");
