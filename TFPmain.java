@@ -13,7 +13,7 @@ public class TFPmain {
         CIO.saveToFile(CIO.DEFAULT_FILE);
         JFrame fullProgram = new JFrame("TFP: Water Credit Tracker");
         fullProgram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fullProgram.setSize(950, 500);
+        fullProgram.setSize(1050, 500);
 
         addComponentsToPane(fullProgram.getContentPane());
 

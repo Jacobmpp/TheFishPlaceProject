@@ -39,17 +39,20 @@ public class CustomerPanel extends Panel {
                 error.setText(" ");
                 searchPanel.boxes.put(CIO.generateKey(c), new SearchedCustomerPanel(c, searchPanel));
                 GridBagConstraints g = new GridBagConstraints();
-                g.fill = GridBagConstraints.NORTH;
-                g.anchor = GridBagConstraints.NORTHWEST;
+                g.fill = GridBagConstraints.BOTH;
+                g.anchor = GridBagConstraints.CENTER;
                 g.gridheight = 1;
-                g.gridwidth = 1;
+                g.gridwidth = 2;
                 g.weightx = 0.5;
                 g.weighty = 0.5;
                 g.gridx = 0;
                 g.gridy = searchPanel.boxes.size() + 1;
+                searchPanel.boxes.get(CIO.generateKey(c)).setVisible(false);
                 searchPanel.add(searchPanel.boxes.get(CIO.generateKey(c)), g);
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 error.setText("Failed to add customer, check formating of numbers");
+            } catch (IllegalArgumentException e) {
+                error.setText("Failed to add customer, name required");
             }
         });
         GridBagConstraints c = new GridBagConstraints();
@@ -80,7 +83,9 @@ public class CustomerPanel extends Panel {
         add(submit, c);
     }
 
-    private String encodeTextFields() {
+    private String encodeTextFields() throws IllegalArgumentException {
+        if (name.text.getText().trim().length() == 0)
+            throw new IllegalArgumentException();
         String out = name.text.getText().trim() + CIO.FILE_DELIMETERS[0];
         out += phoneNumber.text.getText().trim() + CIO.FILE_DELIMETERS[0];
         for (int i = 0; i < waters.length; i++) {
