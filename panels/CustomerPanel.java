@@ -71,8 +71,8 @@ public class CustomerPanel extends Panel {
     }
 
     private String encodeTextFields() {
-        String out = name.getText().trim() + CIO.FILE_DELIMETERS[0];
-        out += phoneNumber.getText().trim() + CIO.FILE_DELIMETERS[0];
+        String out = name.text.getText().trim() + CIO.FILE_DELIMETERS[0];
+        out += phoneNumber.text.getText().trim() + CIO.FILE_DELIMETERS[0];
         for (int i = 0; i < waters.length; i++) {
             out += waters[i].getText().trim() + CIO.FILE_DELIMETERS[0];
         }
