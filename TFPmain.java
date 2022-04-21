@@ -1,5 +1,5 @@
 
-import panels.*;
+import GUI.*;
 
 import javax.swing.*;
 

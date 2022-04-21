@@ -21,3 +21,19 @@ They offer a deal where if you by some amount of some types of water you will re
 - All info needs to be saved so we can refer to it in later instances of the program.
 ## Additional properties that would be nice:
 - Have a way to show when the last time they bought water and what type of water they got.
+
+
+## Customer File Format (all on one line per customer)
+John Doe;                       name
+000-000-0000;                   PhoneNumber
+0.0;                            FilterFresh
+0.0;                            ReverseOsmosis
+0.0;                            InstantOcean
+0.0;                            Brackish
+0.0#                            RedSea
+Sat Apr 09 21:50:21 CDT 2022;   Last purchase Date/Time    Date class toString()
+0.0;                            FilterFresh
+0.0;                            ReverseOsmosis
+0.0;                            InstantOcean
+0.0;                            Brackish
+0.0                             RedSea

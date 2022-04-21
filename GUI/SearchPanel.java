@@ -1,5 +1,5 @@
 
-package panels;
+package GUI;
 
 import backend.*;
 
