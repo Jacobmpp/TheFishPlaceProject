@@ -21,6 +21,8 @@ public class Purchase {
         String parts[] = encoded.split(CIO.FILE_DELIMETERS[0]);
         for (int i = 0; i < Customer.WATER_BRANDS; i++) {
             water[i] = Double.parseDouble(parts[i]);
+            if (water[i] < 0)
+                throw new NumberFormatException();
         }
     }
 }
