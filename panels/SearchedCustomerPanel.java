@@ -5,17 +5,17 @@ import java.awt.*;
 
 import backend.*;
 
-abstract class SearchedCustomerPanel extends JPanel {
+public class SearchedCustomerPanel extends JPanel {
 
-    JLabel key;
-    JButton select = new JButton("Select");
+    JButton select;
     Customer customer;
     SearchPanel searchPanel;
 
 
-    public void seachedCustomerPanel(Customer c, SearchPanel s) {
+    public SearchedCustomerPanel(Customer c, SearchPanel s) {
+        super();
         customer = c;
-        key = new JLabel(CIO.generateKey(c));
+        select = new JButton("Select: " + CIO.generateKey(c));
         searchPanel = s;
         initializePanel();
     }
@@ -23,22 +23,18 @@ abstract class SearchedCustomerPanel extends JPanel {
     private void initializePanel(){
         select.addActionListener(a -> {
             CIO.currentCustomer = customer;
-            searchPanel.searchBar.setText("");
+            searchPanel.infoPanel.updateInfo(); // So I don't have to import and store this stuff for one line of code
+            searchPanel.searchBar.text.setText("");
             searchPanel.clearBoxes();
         });
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         setVisible(true);
-        c.fill = GridBagConstraints.WEST;
-        c.anchor = GridBagConstraints.WEST;
+        c.fill = GridBagConstraints.BOTH;
         c.gridheight = 1;
         c.gridwidth = 1;
         c.gridx = 0;
         c.gridy = 0;
-        add(key,c);
-        c.gridx = 1;
-        c.fill = GridBagConstraints.EAST;
-        c.anchor = GridBagConstraints.EAST;
         add(select, c);
     }
 }

@@ -10,12 +10,8 @@ public class Testmain {
         System.out.println("====The Fish Place====");
 
         CIO.loadFile(CIO.DEFAULT_FILE);
-
         
-        Purchase p = new Purchase(0,10.0,0,20.25,0);    //example of applying a purchase.
-        //CIO.getCustomer(11).applyPurchase(p);
-        System.out.println(CIO.getCustomer(11).redeemable(1));
-        CIO.printCustomers(CIO.customers);
+        //CIO.printCustomers(CIO.customers);
 
         CIO.saveToFile(CIO.DEFAULT_FILE);
 

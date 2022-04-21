@@ -9,15 +9,9 @@ import java.awt.*;
 
 public class TFPmain {
     public static void main(String[] args) {
-        System.out.println("====The Fish Place====");
-
         CIO.loadFile(CIO.DEFAULT_FILE);
-        for (String key : CIO.customers.keySet()) {
-            System.out.println(key);
-        }
         CIO.saveToFile(CIO.DEFAULT_FILE);
-
-        JFrame fullProgram = new JFrame("TFP: Customer Credit Tracker");
+        JFrame fullProgram = new JFrame("TFP: Water Credit Tracker");
         fullProgram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fullProgram.setSize(1300, 700);
 
