@@ -1,7 +1,6 @@
 package panels;
 
 import javax.swing.*;
-import java.awt.*;
 
 abstract class Panel extends JPanel {
 

@@ -4,8 +4,6 @@ package panels;
 import backend.*;
 
 import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -34,10 +32,22 @@ public class CustomerPanel extends Panel {
     private void initializePanel() {
         submit.addActionListener(a -> { // this currently assumes the data input it correct
             try {
-                CIO.addCustomer(new Customer(encodeTextFields()));
+                Customer c = new Customer(encodeTextFields());
+                CIO.addCustomer(c);
                 CIO.saveToFile(CIO.DEFAULT_FILE);
                 clearText();
                 error.setText(" ");
+                searchPanel.boxes.put(CIO.generateKey(c), new SearchedCustomerPanel(c, searchPanel));
+                GridBagConstraints g = new GridBagConstraints();
+                g.fill = GridBagConstraints.NORTH;
+                g.anchor = GridBagConstraints.NORTHWEST;
+                g.gridheight = 1;
+                g.gridwidth = 1;
+                g.weightx = 0.5;
+                g.weighty = 0.5;
+                g.gridx = 0;
+                g.gridy = searchPanel.boxes.size() + 1;
+                searchPanel.add(searchPanel.boxes.get(CIO.generateKey(c)), g);
             } catch (Exception e) {
                 error.setText("Failed to add customer, check formating of numbers");
             }

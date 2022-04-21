@@ -4,11 +4,9 @@ package panels;
 import backend.*;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.util.*;
 import java.util.Map.Entry;
 
-import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.border.*;
 
@@ -47,6 +45,15 @@ public class SearchPanel extends Panel {
                 TreeMap<String, Customer> t = CIO.search(searchBar.text.getText());
                 clearBoxes();
                 if (t.keySet().size() < 16 && !searchBar.text.getText().equals("")) {
+                    GridBagConstraints c = new GridBagConstraints();
+                    c.fill = GridBagConstraints.NORTH;
+                    c.anchor = GridBagConstraints.NORTHWEST;
+                    c.gridheight = 1;
+                    c.gridwidth = 1;
+                    c.weightx = 0.5;
+                    c.weighty = 0.5;
+                    c.gridx = 0;
+                    c.gridy = 0;
                     for (String k : t.keySet()) {
                         boxes.get(k).setVisible(true);
                     }
@@ -63,7 +70,6 @@ public class SearchPanel extends Panel {
         c.weighty = 0.5;
         c.gridx = 0;
         c.gridy = 0;
-        c.ipadx = 5;
         add(searchBar, c);
         for (SearchedCustomerPanel s : boxes.values()) {
             c.gridy++;
