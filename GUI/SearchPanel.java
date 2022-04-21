@@ -8,6 +8,7 @@ import java.util.*;
 import java.util.Map.Entry;
 
 import javax.swing.event.*;
+import javax.swing.*;
 import javax.swing.border.*;
 
 public class SearchPanel extends Panel {
@@ -17,10 +18,12 @@ public class SearchPanel extends Panel {
 
     SearchPanel searchPanel = this;
 
+    JLabel logo = new JLabel(new ImageIcon("GUI/logo.png"));
+
     public SearchPanel() {
         super();
         setLayout(new GridBagLayout());
-        setBorder(new LineBorder(Color.GREEN));
+        setBorder(new LineBorder(Color.BLUE));
         initializePanel();
     }
 
@@ -70,7 +73,11 @@ public class SearchPanel extends Panel {
         c.weighty = 0.5;
         c.gridx = 0;
         c.gridy = 0;
+        add(logo, c);
+        c.gridx++;
         add(searchBar, c);
+        c.gridx = 0;
+        c.gridwidth = 2;
         for (SearchedCustomerPanel s : boxes.values()) {
             c.gridy++;
             s.setVisible(true);

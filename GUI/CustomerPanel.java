@@ -25,7 +25,7 @@ public class CustomerPanel extends Panel {
     public CustomerPanel() {
         super();
         setLayout(new GridBagLayout());
-        setBorder(new LineBorder(Color.YELLOW));
+        setBorder(new LineBorder(Color.BLUE));
         initializePanel();
     }
 

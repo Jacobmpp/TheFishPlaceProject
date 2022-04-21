@@ -23,7 +23,7 @@ public class PurchasePanel extends Panel {
     public PurchasePanel() {
         super();
         setLayout(new GridBagLayout());
-        setBorder(new LineBorder(Color.RED));
+        setBorder(new LineBorder(Color.BLUE));
         initializePanel();
     }
 
@@ -79,7 +79,7 @@ public class PurchasePanel extends Panel {
         c.fill = GridBagConstraints.EAST;
         c.anchor = GridBagConstraints.CENTER;
         c.gridy++;
-        c.gridx = 1;
+        c.gridx = 0;
         c.gridwidth = 1;
         add(buy, c);
         c.gridx++;
