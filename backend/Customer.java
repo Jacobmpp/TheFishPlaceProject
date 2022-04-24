@@ -1,5 +1,6 @@
 package backend;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Customer {
@@ -39,8 +40,10 @@ public class Customer {
     private void importLastData(String data) {
         hasLastBought = true;
         String[] parts = data.split(CIO.FILE_DELIMETERS[0]);
-
-        lastBought = new Date(parts[0]); // depricated. change to DateFormat.parse(String) at some point.
+        try {
+            lastBought = (new SimpleDateFormat()).parse(parts[0]);
+        } catch (Exception e) {
+        }
         for (int i = 0; i < water.length; i++) {
             lastWater[i] = Double.parseDouble(parts[i + 1]);
         }

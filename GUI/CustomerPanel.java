@@ -52,7 +52,7 @@ public class CustomerPanel extends Panel {
             } catch (NumberFormatException e) {
                 error.setText("Failed to add customer, check formating of numbers");
             } catch (IllegalArgumentException e) {
-                error.setText("Failed to add customer, name required");
+                error.setText("Failed to add customer, " + e.getMessage());
             }
         });
         GridBagConstraints c = new GridBagConstraints();
