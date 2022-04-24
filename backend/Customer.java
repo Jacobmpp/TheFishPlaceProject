@@ -77,7 +77,7 @@ public class Customer {
     }
 
     public double amountRedeemable(int index) { // returns amount of water that can be redeemed of type index.
-        return (water[index] - water[index] % credit[index]) / 5;
+        return (water[index] < credit[index]) ? 0 : Math.round(water[index] / 5);
     }
     // OVERRIDES/MISC
 
