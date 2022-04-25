@@ -25,4 +25,11 @@ public class Purchase {
                 throw new NumberFormatException();
         }
     }
+
+    public Purchase() throws NumberFormatException {
+        purchaseDate = new Date();
+        for (int i = 0; i < Customer.WATER_BRANDS; i++) {
+            water[i] = 0;
+        }
+    }
 }

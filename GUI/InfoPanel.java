@@ -1,11 +1,14 @@
 
 package GUI;
 
-import backend.*;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.JLabel;
+import javax.swing.border.LineBorder;
+
+import backend.CIO;
 
 public class InfoPanel extends Panel {
     JLabel name[] = { new JLabel("Name: "), new JLabel("") };

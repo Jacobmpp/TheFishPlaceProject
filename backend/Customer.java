@@ -1,5 +1,6 @@
 package backend;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -20,10 +21,11 @@ public class Customer {
         String[] parts = fromString.split(CIO.FILE_DELIMETERS[1]);
 
         importData(parts[0]);
-
-        if (parts.length == 1) // if there is no data on last purchase.
-            return;
-        importLastData(parts[1]);
+        try {
+            importLastData(parts[1]);
+        } catch (Exception e) {
+            applyPurchase(new Purchase());
+        }
     }
 
     private void importData(String data) {
@@ -41,7 +43,7 @@ public class Customer {
         hasLastBought = true;
         String[] parts = data.split(CIO.FILE_DELIMETERS[0]);
         try {
-            lastBought = (new SimpleDateFormat()).parse(parts[0]);
+            lastBought = new Date(parts[0]);
         } catch (Exception e) {
         }
         for (int i = 0; i < water.length; i++) {

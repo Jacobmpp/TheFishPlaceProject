@@ -1,6 +1,6 @@
 package GUI;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 abstract class Panel extends JPanel {
 

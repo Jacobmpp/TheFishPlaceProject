@@ -1,7 +1,11 @@
 package GUI;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class JLabeledTextInput extends JPanel {
     public JLabel label = new JLabel();

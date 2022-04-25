@@ -1,12 +1,16 @@
 
 package GUI;
 
-import backend.*;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.border.LineBorder;
 
-import javax.swing.*;
-import javax.swing.border.*;
+import backend.CIO;
+import backend.Purchase;
 
 public class PurchasePanel extends Panel {
     JLabeledTextInput waters[] = {

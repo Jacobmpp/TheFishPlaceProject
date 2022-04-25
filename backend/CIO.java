@@ -1,8 +1,12 @@
 package backend;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.util.Date;
 import java.util.Map.Entry;
+import java.util.Scanner;
+import java.util.TreeMap;
 
 public class CIO {
     public static final String[] FILE_DELIMETERS = { ";", "#" };
@@ -14,7 +18,6 @@ public class CIO {
     // LOAD/SAVE Methods
     public static void loadFile(String fileName) { // loads the customer data in "fileName" into the customers map.
         customers = new TreeMap<>(); // resets the map.
-
         Scanner in;
         try {
             File f = new File(fileName);
@@ -30,6 +33,7 @@ public class CIO {
         }
 
         in.close();
+        saveToFile(DEFAULT_FILE);
     }
 
     public static void saveToFile(String fileName) { // saves the customer data in the customers map to "fileName"
@@ -58,17 +62,23 @@ public class CIO {
             if (k.name.equals(c.name))
                 throw new IllegalArgumentException("Customer already exists");
         }
-        customers.put(generateKey(c), c);
+
+        long time1 = new Date().getTime();
+        long time2 = time1;
+        try {
+            time2 = c.lastBought.getTime();
+        } catch (Exception e){}
+        long age = Math.abs(time1 - time2);
+        if (age < 31557600000l)
+            customers.put(generateKey(c), c);
     }
 
     public static void addCustomer(String s) {
-        Customer c = new Customer(s);
-        addCustomer(c);
+        addCustomer(new Customer(s));
     }
 
     public static void removeCustomer(Customer c) {
-        String key = generateKey(c);
-        customers.remove(key);
+        customers.remove(generateKey(c));
     }
 
     public static void removeCustomer(String key) { // assumes s is in the format given by generateKey()

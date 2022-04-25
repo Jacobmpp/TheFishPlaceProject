@@ -1,15 +1,20 @@
 
 package GUI;
 
-import backend.*;
-
-import java.awt.*;
-import java.util.*;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
-import javax.swing.event.*;
-import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.border.LineBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
+import backend.CIO;
+import backend.Customer;
 
 public class SearchPanel extends Panel {
     JLabeledTextInput searchBar = new JLabeledTextInput("Search: ", 15);

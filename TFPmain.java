@@ -1,11 +1,15 @@
 
-import GUI.*;
+import java.awt.Container;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
-import backend.*;
-
-import java.awt.*;
+import GUI.CustomerPanel;
+import GUI.InfoPanel;
+import GUI.PurchasePanel;
+import GUI.SearchPanel;
+import backend.CIO;
 
 public class TFPmain {
     public static void main(String[] args) {

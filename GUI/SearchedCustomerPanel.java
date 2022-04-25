@@ -1,9 +1,13 @@
 package GUI;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
-import backend.*;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import backend.CIO;
+import backend.Customer;
 
 public class SearchedCustomerPanel extends JPanel {
 
