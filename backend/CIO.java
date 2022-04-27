@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 public class CIO {
-    public static final String[] FILE_DELIMETERS = { ";", "#" };
+    public static final String[] FILE_DELIMETERS = { ";", "#", "%" };
     public static final String DEFAULT_FILE = "backend\\customers.dat";
 
     public static TreeMap<String, Customer> customers;
@@ -63,13 +63,8 @@ public class CIO {
                 throw new IllegalArgumentException("Customer already exists");
         }
 
-        long time1 = new Date().getTime();
-        long time2 = time1;
-        try {
-            time2 = c.lastBought.getTime();
-        } catch (Exception e){}
-        long age = Math.abs(time1 - time2);
-        if (age < 31557600000l)
+        // If customer has not made a purchase in over a year, don't add the customer
+        if (!c.hasLastBought || Math.abs(new Date().getTime() - c.lastBought.getTime()) < 31557600000l)
             customers.put(generateKey(c), c);
     }
 
@@ -136,6 +131,12 @@ public class CIO {
         System.out.printf(" |<>|%30s | ", c.lastBought.toString());
         printWater(c.lastWater);
         System.out.println();
+    }
+
+    public static void printWater(double[][] w) {
+        for (int i = 0; i < w.length; i++) {
+            System.out.printf("%6.2f + %6.2f", w[i][0], w[i][1]);
+        }
     }
 
     public static void printWater(double[] w) {

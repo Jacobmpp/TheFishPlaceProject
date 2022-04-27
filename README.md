@@ -25,28 +25,20 @@ They offer a deal where if you by some amount of some types of water you will re
 
 ## Customer File Format (all on one line per customer)
 John Doe;                       name
-
 000-000-0000;                   PhoneNumber
-
 0.0;                            FilterFresh
-
 0.0;                            ReverseOsmosis
-
 0.0;                            InstantOcean
-
 0.0;                            Brackish
-
-0.0#                            RedSea
-
+0.0%;                           RedSea
+0.0;                            FilterFreshFree unclaimed redeemed residual
+0.0;                            ReverseOsmosis unclaimed redeemed residual
+0.0;                            InstantOcean unclaimed redeemed residual
+0.0;                            Brackish unclaimed redeemed residual
+0.0#                            RedSea unclaimed redeemed residual
 Sat Apr 09 21:50:21 CDT 2022;   Last purchase Date/Time    Date class toString()
-
 0.0;                            FilterFresh
-
 0.0;                            ReverseOsmosis
-
 0.0;                            InstantOcean
-
 0.0;                            Brackish
-
 0.0                             RedSea
-

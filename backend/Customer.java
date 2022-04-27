@@ -1,7 +1,5 @@
 package backend;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Customer {
@@ -9,7 +7,7 @@ public class Customer {
     public static final double credit[] = { 10.0, 25.0, 50.0, 50.0, 50.0 };
     public String name;
     public String phoneNumber;
-    public double water[] = new double[WATER_BRANDS];
+    public double water[][] = new double[WATER_BRANDS][2];
 
     public boolean hasLastBought = false;
     public Date lastBought;
@@ -29,12 +27,15 @@ public class Customer {
     }
 
     private void importData(String data) {
-        String[] parts = data.split(CIO.FILE_DELIMETERS[0]);
+        String[] parts = data.split(CIO.FILE_DELIMETERS[2] + CIO.FILE_DELIMETERS[0]);
+        String[] partsA = parts[0].split(CIO.FILE_DELIMETERS[0]);
+        String[] partsB = parts[1].split(CIO.FILE_DELIMETERS[0]);
 
-        name = parts[0].trim();
-        phoneNumber = parts[1].trim();
+        name = partsA[0].trim();
+        phoneNumber = partsA[1].trim();
         for (int i = 0; i < water.length; i++) {
-            water[i] = Double.parseDouble(parts[i + 2]);
+            water[i][0] = Double.parseDouble(partsA[i + 2]);
+            water[i][1] = Double.parseDouble(partsB[i]);
         }
     }
 
@@ -42,10 +43,7 @@ public class Customer {
     private void importLastData(String data) {
         hasLastBought = true;
         String[] parts = data.split(CIO.FILE_DELIMETERS[0]);
-        try {
-            lastBought = new Date(parts[0]);
-        } catch (Exception e) {
-        }
+        lastBought = new Date(parts[0]);
         for (int i = 0; i < water.length; i++) {
             lastWater[i] = Double.parseDouble(parts[i + 1]);
         }
@@ -53,11 +51,11 @@ public class Customer {
 
     // ADD/SUBTRACT
     public void addWater(int index, double gal) {
-        water[index] += gal;
+        water[index][0] += gal;
     }
 
     public void removeWater(int index, double gal) {
-        water[index] -= gal;
+        water[index][0] -= gal;
     }
 
     public void applyPurchase(Purchase p) {
@@ -74,12 +72,18 @@ public class Customer {
         if (numGal > amountRedeemable(index)) {
             throw new IllegalArgumentException();
         }
-        water[index] -= numGal * 5;
+        if (numGal <= water[index][1]) {
+            water[index][1] -= numGal;
+        } else {
+            water[index][0] -= (numGal - water[index][1]) * 5;
+            water[index][1] = (water[index][0] % credit[index]) / 5;
+            water[index][0] = (water[index][0] - water[index][0] % credit[index]);
+        }
         return true;
     }
 
     public double amountRedeemable(int index) { // returns amount of water that can be redeemed of type index.
-        return (water[index] < credit[index]) ? 0 : Math.round(water[index] / 5);
+        return (Math.floor(water[index][0] / credit[index]) * credit[index]) / 5 + water[index][1];
     }
     // OVERRIDES/MISC
 
@@ -89,7 +93,13 @@ public class Customer {
 
         String out = name + delim + phoneNumber;
         for (int i = 0; i < water.length; i++) {
-            out += delim + water[i];
+            out += delim + water[i][0];
+        }
+
+        out += CIO.FILE_DELIMETERS[2];
+
+        for (int i = 0; i < water.length; i++) {
+            out += delim + water[i][1];
         }
 
         out += CIO.FILE_DELIMETERS[1];

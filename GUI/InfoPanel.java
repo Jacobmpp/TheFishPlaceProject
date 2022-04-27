@@ -33,7 +33,7 @@ public class InfoPanel extends Panel {
         name[1].setText(CIO.currentCustomer.name);
         phoneNumber[1].setText(CIO.currentCustomer.phoneNumber);
         for (int i = 0; i < waters.length; i++) {
-            waters[i][1].setText(CIO.currentCustomer.water[i]
+            waters[i][1].setText(CIO.currentCustomer.water[i][0]
                     + " (" + CIO.currentCustomer.amountRedeemable(i) + ")");
         }
 
