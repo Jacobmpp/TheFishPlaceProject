@@ -75,9 +75,10 @@ public class Customer {
         if (numGal <= water[index][1]) {
             water[index][1] -= numGal;
         } else {
-            water[index][0] -= (numGal - water[index][1]) * 5;
-            water[index][1] = (water[index][0] % credit[index]) / 5;
-            water[index][0] = (water[index][0] - water[index][0] % credit[index]);
+            numGal -= water[index][1]; // use residuals
+            water[index][0] -= Math.ceil((numGal * 5) / credit[index]) * credit[index]; // redeem directly from water
+                                                                                        // purchased in chunks
+            water[index][1] = (credit[index] / 5 - specialRemainder(numGal, (credit[index] / 5))); // set residuals to any extra
         }
         return true;
     }
@@ -112,5 +113,13 @@ public class Customer {
         }
 
         return out;
+    }
+
+    private double specialRemainder(double base, double divisor) {
+        if (base == 0)
+            return 0;
+        if (base % divisor == 0)
+            return divisor;
+        return base % divisor;
     }
 }
