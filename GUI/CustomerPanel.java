@@ -95,7 +95,8 @@ public class CustomerPanel extends Panel {
         for (int i = 0; i < waters.length; i++) {
             out += waters[i].getText().trim() + CIO.FILE_DELIMETERS[0];
         }
-        return out.substring(0, out.length() - 1) + CIO.FILE_DELIMETERS[1]; // replace the last ; with a #
+        return out.substring(0, out.length() - 1) + CIO.FILE_DELIMETERS[2] + ";0.0;0.0;0.0;0.0;0.0"
+                + CIO.FILE_DELIMETERS[1]; // update to conform to new string format
     }
 
     private void clearText() {
