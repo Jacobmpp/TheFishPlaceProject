@@ -1,15 +1,12 @@
 
 package GUI;
 
-import java.awt.Color;
 import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -29,8 +26,6 @@ public class SearchPanel extends Panel {
 
     public SearchPanel() {
         super();
-        setLayout(new GridBagLayout());
-        setBorder(new LineBorder(Color.BLUE));
         initializePanel();
     }
 

@@ -3,11 +3,9 @@ package GUI;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.border.LineBorder;
 
 import backend.CIO;
 import backend.Customer;
@@ -28,8 +26,6 @@ public class CustomerPanel extends Panel {
 
     public CustomerPanel() {
         super();
-        setLayout(new GridBagLayout());
-        setBorder(new LineBorder(Color.BLUE));
         initializePanel();
     }
 

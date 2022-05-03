@@ -15,7 +15,7 @@ public class SearchedCustomerPanel extends JPanel {
     Customer customer;
     SearchPanel searchPanel;
 
-
+    
     public SearchedCustomerPanel(Customer c, SearchPanel s) {
         super();
         customer = c;
@@ -24,7 +24,7 @@ public class SearchedCustomerPanel extends JPanel {
         initializePanel();
     }
 
-    private void initializePanel(){
+    private void initializePanel() {
         select.addActionListener(a -> {
             CIO.currentCustomer = customer;
             searchPanel.infoPanel.updateInfo(); // So I don't have to import and store this stuff for one line of code

@@ -1,12 +1,9 @@
 
 package GUI;
 
-import java.awt.Color;
 import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 
 import javax.swing.JLabel;
-import javax.swing.border.LineBorder;
 
 import backend.CIO;
 
@@ -24,8 +21,6 @@ public class InfoPanel extends Panel {
 
     public InfoPanel() {
         super();
-        setLayout(new GridBagLayout());
-        setBorder(new LineBorder(Color.BLUE));
         initializePanel();
     }
 
