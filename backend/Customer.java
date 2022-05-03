@@ -69,7 +69,7 @@ public class Customer {
     }
 
     public boolean redeem(int index, double numGal) throws IllegalArgumentException {
-        if (numGal > amountRedeemable(index)) {
+        if (numGal > amountRedeemable(index) || numGal < 0) {
             throw new IllegalArgumentException();
         }
         if (numGal <= water[index][1]) {
@@ -78,7 +78,8 @@ public class Customer {
             numGal -= water[index][1]; // use residuals
             water[index][0] -= Math.ceil((numGal * 5) / credit[index]) * credit[index]; // redeem directly from water
                                                                                         // purchased in chunks
-            water[index][1] = (credit[index] / 5 - specialRemainder(numGal, (credit[index] / 5))); // set residuals to any extra
+            water[index][1] = (credit[index] / 5 - specialRemainder(numGal, (credit[index] / 5))); // set residuals to
+                                                                                                   // any extra
         }
         return true;
     }

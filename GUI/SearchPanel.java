@@ -23,6 +23,8 @@ public class SearchPanel extends Panel {
 
     SearchPanel searchPanel = this;
 
+    JLabel blank = new JLabel(" ");
+
     JLabel logo = new JLabel(new ImageIcon("GUI/logo.png"));
 
     public SearchPanel() {
@@ -75,7 +77,7 @@ public class SearchPanel extends Panel {
         c.gridheight = 1;
         c.gridwidth = 1;
         c.weightx = 0.5;
-        c.weighty = 0.5;
+        c.weighty = 0.01;
         c.gridx = 0;
         c.gridy = 0;
         add(logo, c);
@@ -83,13 +85,16 @@ public class SearchPanel extends Panel {
         add(searchBar, c);
         c.gridx = 0;
         c.gridwidth = 2;
-        c.fill = GridBagConstraints.BOTH;
-        c.anchor = GridBagConstraints.CENTER;
+        c.fill = GridBagConstraints.WEST;
+        c.anchor = GridBagConstraints.WEST;
         for (SearchedCustomerPanel s : boxes.values()) {
             c.gridy++;
-            s.setVisible(false);
             add(s, c);
+            s.setVisible(false);
         }
+        c.gridy = c.gridy + 1000;
+        c.weighty = .99;
+        add(blank, c);
     }
 
     public void clearBoxes() {

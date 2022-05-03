@@ -15,7 +15,7 @@ import backend.Customer;
 public class CustomerPanel extends Panel {
 
     JLabeledTextInput name = new JLabeledTextInput("Name: ");
-    JLabeledTextInput phoneNumber = new JLabeledTextInput("phoneNumber: ");
+    JLabeledTextInput phoneNumber = new JLabeledTextInput("Phone Number: ");
     JLabeledTextInput waters[] = {
             new JLabeledTextInput("Filter Fresh: "),
             new JLabeledTextInput("Reverse Osmosis: "),
